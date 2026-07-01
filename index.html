@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#7ed3f2" />
+  <title>P5 3D Fraction Sharpshooter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="gameCanvas" aria-label="3D 分數射擊遊戲"></canvas>
+
+  <div id="hud">
+    <div class="topbar">
+      <div class="title"><span class="title-icon">🏹</span><span>3D 分數神射手</span></div>
+      <div class="stats">
+        <div class="stat">分數：<span id="scoreValue">0</span></div>
+        <div class="stat">關卡：<span id="levelValue">1</span>/10</div>
+        <div class="stat" id="timerStat">時間：<span id="timeValue">60</span></div>
+      </div>
+    </div>
+    <div class="question-card" id="questionCard"></div>
+    <div class="feedback-card" id="feedbackCard">瞄準正確答案，按「射箭」！</div>
+  </div>
+
+  <div id="crosshair" aria-hidden="true"><span class="dot"></span></div>
+
+  <div id="controls">
+    <div id="joystickZone" aria-label="移動搖桿">
+      <div id="joystickBase"></div>
+      <div id="joystickKnob"></div>
+    </div>
+    <div id="lookHint">拖動畫面：360° 視角</div>
+    <button id="shootButton" type="button" aria-label="射箭">射箭</button>
+  </div>
+
+  <div id="startOverlay" class="overlay">
+    <div class="modal">
+      <h1>🏹 3D 分數神射手</h1>
+      <p>怪獸身上有不同分數。算出答案，瞄準正確怪獸並射箭！</p>
+      <div class="tips">
+        <p>🕹️ 左下搖桿／WASD：自由行走</p>
+        <p>👆 拖動畫面／滑鼠拖曳：360° 轉動視角</p>
+        <p>🎯 中央準星 +「射箭」／空白鍵：攻擊</p>
+        <p>⏱️ 最長 60 秒；答對即自動進入下一關</p>
+      </div>
+      <button id="startButton" class="main-button" type="button">開始挑戰</button>
+    </div>
+  </div>
+
+  <div id="endOverlay" class="overlay hidden">
+    <div class="modal">
+      <h1 id="endTitle">挑戰完成！</h1>
+      <p id="endSummary"></p>
+      <button id="restartButton" class="main-button" type="button">再玩一次</button>
+    </div>
+  </div>
+
+  <div id="damageFlash"></div>
+  <div id="rotateNotice">📱 請將裝置橫向旋轉<br />以獲得最佳 3D 遊戲體驗</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
