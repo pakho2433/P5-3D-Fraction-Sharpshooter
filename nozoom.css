@@ -1,0 +1,28 @@
+html,
+body,
+#gameCanvas,
+#controls,
+#joystickZone,
+#joystickBase,
+#joystickKnob,
+#shootButton,
+.overlay,
+.modal,
+.difficulty-button,
+.main-button,
+.secondary-button {
+  touch-action: none !important;
+  -ms-touch-action: none !important;
+}
+
+html,
+body {
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+button,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
