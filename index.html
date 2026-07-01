@@ -14,6 +14,7 @@
     <div class="topbar">
       <div class="title"><span class="title-icon">🏹</span><span>3D 分數神射手</span></div>
       <div class="stats">
+        <div class="stat">程度：<span id="difficultyValue">一</span></div>
         <div class="stat">分數：<span id="scoreValue">0</span></div>
         <div class="stat">關卡：<span id="levelValue">1</span>/10</div>
         <div class="stat" id="timerStat">時間：<span id="timeValue">60</span></div>
@@ -21,12 +22,6 @@
     </div>
     <div class="question-card" id="questionCard"></div>
     <div class="feedback-card" id="feedbackCard">瞄準正確答案，按「射箭」！</div>
-  </div>
-
-  <div id="bossHud" class="boss-hud hidden" aria-live="polite">
-    <div class="boss-hud-title">👑 大怪獸 HP：<span id="bossHpValue">10</span>/10</div>
-    <div class="boss-hp-track"><div id="bossHpFill" class="boss-hp-fill"></div></div>
-    <div class="boss-hud-rule">擊倒正確答案的小怪獸，才能令大怪獸 HP -1</div>
   </div>
 
   <div id="crosshair" aria-hidden="true"><span class="dot"></span></div>
@@ -40,18 +35,42 @@
     <button id="shootButton" type="button" aria-label="射箭">射箭</button>
   </div>
 
+  <div id="bossHud" class="boss-hud hidden" aria-live="polite">
+    <div class="boss-hud-title">👑 大怪獸 HP：<span id="bossHpValue">10</span>/10</div>
+    <div class="boss-hp-track"><div id="bossHpFill" class="boss-hp-fill"></div></div>
+    <div class="boss-hud-rule">擊倒正確答案的小怪獸，才能令大怪獸 HP -1</div>
+  </div>
+
   <div id="startOverlay" class="overlay">
-    <div class="modal">
+    <div class="modal start-modal">
       <h1>🏹 3D 分數神射手</h1>
-      <p>怪獸身上有不同分數。算出答案，瞄準正確怪獸並射箭！</p>
-      <div class="tips">
-        <p>🕹️ 左下搖桿／WASD：在更大的森林場地自由行走</p>
-        <p>👆 拖動畫面／滑鼠拖曳：360° 轉動視角</p>
-        <p>🎯 中央準星 +「射箭」／空白鍵：攻擊</p>
-        <p>🏹 箭會飛出並插在被射中的怪獸身上</p>
-        <p>⏱️ 第 1–9 關每關 60 秒；過關重設，射錯扣 5 秒</p>
-        <p>👾 第 6 關起怪獸會攻擊；被擊中扣 5 秒</p>
-        <p>👑 第 10 關不限時：大怪獸 HP 10，擊倒正確小怪才可扣 HP</p>
+      <p class="intro-text">選擇程度，再算出怪獸身上的正確答案！</p>
+
+      <div class="difficulty-grid" role="group" aria-label="選擇遊戲程度">
+        <button class="difficulty-button selected" type="button" data-difficulty="1" aria-pressed="true">
+          <span class="difficulty-name">程度一</span>
+          <span class="difficulty-detail">2 個分數加減</span>
+          <span class="difficulty-detail">答案只是真分數</span>
+          <span class="difficulty-time">每關 60 秒</span>
+        </button>
+        <button class="difficulty-button" type="button" data-difficulty="2" aria-pressed="false">
+          <span class="difficulty-name">程度二</span>
+          <span class="difficulty-detail">3 個分數加減</span>
+          <span class="difficulty-detail">答案是帶分數</span>
+          <span class="difficulty-time">每關 90 秒</span>
+        </button>
+        <button class="difficulty-button" type="button" data-difficulty="3" aria-pressed="false">
+          <span class="difficulty-name">程度三</span>
+          <span class="difficulty-detail">3 個分數加減</span>
+          <span class="difficulty-detail">真／假／帶分數答案</span>
+          <span class="difficulty-time">每關 90 秒</span>
+        </button>
+      </div>
+
+      <div class="tips compact-tips">
+        <p>🕹️ 搖桿／WASD：自由行走　👆 拖動畫面：360° 視角</p>
+        <p>🏹 射錯扣 5 秒；第 6 關起怪獸會攻擊</p>
+        <p>👑 第 10 關不限時：擊倒正確小怪，令大怪獸 HP 由 10 降至 0</p>
       </div>
       <button id="startButton" class="main-button" type="button">開始挑戰</button>
     </div>
@@ -61,7 +80,10 @@
     <div class="modal">
       <h1 id="endTitle">挑戰完成！</h1>
       <p id="endSummary"></p>
-      <button id="restartButton" class="main-button" type="button">再玩一次</button>
+      <div class="end-buttons">
+        <button id="restartButton" class="main-button" type="button">同程度再玩</button>
+        <button id="chooseLevelButton" class="secondary-button" type="button">重新選程度</button>
+      </div>
     </div>
   </div>
 
@@ -69,6 +91,6 @@
   <div id="rotateNotice">📱 請將裝置橫向旋轉<br />以獲得最佳 3D 遊戲體驗</div>
 
   <script src="https://cdn.jsdelivr.net/npm/three@0.159.0/build/three.min.js"></script>
-  <script src="game.js"></script>
+  <script type="module" src="game.js"></script>
 </body>
 </html>
