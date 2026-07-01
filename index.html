@@ -23,6 +23,12 @@
     <div class="feedback-card" id="feedbackCard">瞄準正確答案，按「射箭」！</div>
   </div>
 
+  <div id="bossHud" class="boss-hud hidden" aria-live="polite">
+    <div class="boss-hud-title">👑 大怪獸 HP：<span id="bossHpValue">10</span>/10</div>
+    <div class="boss-hp-track"><div id="bossHpFill" class="boss-hp-fill"></div></div>
+    <div class="boss-hud-rule">擊倒正確答案的小怪獸，才能令大怪獸 HP -1</div>
+  </div>
+
   <div id="crosshair" aria-hidden="true"><span class="dot"></span></div>
 
   <div id="controls">
@@ -39,12 +45,13 @@
       <h1>🏹 3D 分數神射手</h1>
       <p>怪獸身上有不同分數。算出答案，瞄準正確怪獸並射箭！</p>
       <div class="tips">
-        <p>🕹️ 左下搖桿／WASD：自由行走</p>
+        <p>🕹️ 左下搖桿／WASD：在更大的森林場地自由行走</p>
         <p>👆 拖動畫面／滑鼠拖曳：360° 轉動視角</p>
         <p>🎯 中央準星 +「射箭」／空白鍵：攻擊</p>
         <p>🏹 箭會飛出並插在被射中的怪獸身上</p>
-        <p>⏱️ 每關 60 秒；過關後時間重設，射錯扣 5 秒</p>
+        <p>⏱️ 第 1–9 關每關 60 秒；過關重設，射錯扣 5 秒</p>
         <p>👾 第 6 關起怪獸會攻擊；被擊中扣 5 秒</p>
+        <p>👑 第 10 關不限時：大怪獸 HP 10，擊倒正確小怪才可扣 HP</p>
       </div>
       <button id="startButton" class="main-button" type="button">開始挑戰</button>
     </div>
